@@ -1,0 +1,37 @@
+const currency = require('./currency')
+console.log('200000 VND equals this amount of JP Yen: ', currency.vndToJpy(200000))
+console.log('800 JP Yen equals this amount of VND: ', currency.jpyToVnd(800))
+console.log(currency)
+console.log('--------------------------')
+
+const calculator = require('./calculator_advanced')
+console.log('2 * 2 =', calculator.add(2, 2))
+console.log('9 - 7 =', calculator.substract(9, 7))
+console.log('9 * 6 =', calculator.multiply(9, 6))
+console.log('10 / 5 =', calculator.divide(10, 5))
+console.log(calculator)
+console.log('--------------------------')
+
+const arrayUtils = require('./arrray')
+console.log('Uniq Array [1, 2, 1, 1, 2, 1, 3, 4, 1] = ', arrayUtils.unique([1, 2, 1, 1, 2, 1, 3, 4, 1 ]))
+console.log('Flatten [[1, 2], [3, 4], [[5, 6]]] = ', arrayUtils.flatten([[1, 2], [3, 4], [[5, 6]]]))
+console.log('Subtract [1, 2, 3, 4, 5] - [2, 4] = ', arrayUtils.subtract([1, 2, 3, 4, 5], [2, 4]))
+console.log(arrayUtils)
+console.log('--------------------------')
+
+const bad = require('./bad_exports')
+console.log('Bad exports in require = ', bad)
+console.log('Try to call method {greeting} of Bad exports = ', typeof bad.greeting)
+console.log('--------------------------')
+
+const singleton1 = require('./singleton')
+singleton1.increment()
+singleton1.increment()
+console.log('Let creating a Node.js module')
+console.log('singleton1.get() = ', singleton1.get())
+console.log('singleton1.value = ', singleton1.value) // prints undefined as value is private
+console.log('Are Node.js modules singletons?')
+const singleton2 = require('./singleton')  // Let’s create an example to demonstrate module caching
+singleton2.increment()
+console.log('Exec singleton2.increment() but singleton1.get() = ', singleton1.get())
+console.log('Singleton pattern is present here')
